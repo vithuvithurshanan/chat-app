@@ -1,0 +1,4 @@
+<div *ngFor="let user of online$ | async" style="display:flex; align-items:center; gap:0.5rem; padding:0.5rem; border-bottom:1px solid #ccc; cursor:pointer" (click)="openChat(user.uid)">
+  <div [style.background]="user.online ? 'limegreen' : 'gray'" style="width:10px; height:10px; border-radius:50%;"></div>
+  <span>{{ user.displayName || user.email }}</span>
+</div>

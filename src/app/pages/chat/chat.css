@@ -1,0 +1,82 @@
+.message {
+  min-width:20%;
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  margin: 0.5rem;
+
+  clear: both;
+  position: relative;
+  word-wrap: break-word;
+}
+
+/* 🔹 My messages (right side, blue) */
+.my-message {
+  background: rgba(59,130,246,0.9); /* blue */
+  color: white;
+  margin-left: auto;
+  text-align: left;
+  border-top-right-radius: 0;
+  width: fit-content;
+}
+
+.my-message p {
+ text-align: right;
+}
+.glass-button {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  height: 80px;
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 0.75rem;
+}
+
+.glass-button:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+
+/* 🔹 Other messages (left side, gray) */
+.other-message {
+  background: rgba(107,114,128,0.7); /* gray */
+  color: white;
+  margin-right: auto;
+  text-align: left;
+  border-top-left-radius: 0;
+  width: fit-content;
+}
+.other-message p{
+  text-align: right;
+}
+/* header inside bubble */
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  margin-bottom: 0.3rem;
+}
+
+/* message text */
+.message-text {
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* delete button */
+.delete-btn {
+  position: absolute;
+  bottom: 5px;
+  left: 8px;
+  background: transparent;
+  border: none;
+  color: #c22c2c;
+  font-size: 0.8rem;
+  cursor: pointer;
+
+}
