@@ -10,6 +10,8 @@ import {
 } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import {Presence} from './presence';
+import {CanActivateFn, Router} from '@angular/router';
+import {map} from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -94,3 +96,19 @@ export class AuthService {
     }
   }
 }
+
+export const AuthGuard: CanActivateFn = () => {
+  const auth = inject(AuthService);
+  const router = inject(Router);
+
+  return auth.user$.pipe(
+    map((user) => {
+      if (user) {
+        return true; // ✅ logged in
+      } else {
+        router.navigateByUrl('/home'); // 🚫 not logged in → go login
+        return false;
+      }
+    })
+  );
+};

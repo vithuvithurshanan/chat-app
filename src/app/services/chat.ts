@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import {Firestore,  collection, deleteDoc, doc, onSnapshot} from '@angular/fire/firestore';
+import {Firestore,  collection, deleteDoc, doc, onSnapshot, setDoc} from '@angular/fire/firestore';
 import { addDoc, serverTimestamp, query, orderBy } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 
@@ -40,6 +40,13 @@ export class Chat {
       displayName: displayName || null,
       createdAt: serverTimestamp()
     });
+
+    // Update last message time for both users
+    const chatRoomRef = doc(this.firestore, `chats/${roomId}`);
+    await setDoc(chatRoomRef, {
+      lastMessageTime: serverTimestamp(),
+      participants: [senderId, receiverId]
+    }, { merge: true });
   }
 
   // ✅ Get messages between two users
