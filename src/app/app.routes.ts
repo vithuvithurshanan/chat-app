@@ -1,40 +1,35 @@
-import { RouterModule, Routes } from '@angular/router';
-import {Signup} from './pages/signup/signup';
-import {Login} from './pages/login/login';
-import {ChatComponents} from './pages/chat/chat';
-import {NgModule} from "@angular/core";
-import {Home} from "./pages/home/home";
+import { Routes } from '@angular/router';
+import { Signup } from './pages/signup/signup';
+import { Login } from './pages/login/login';
+import { ChatComponents } from './pages/chat/chat';
+import { Home } from './pages/home/home';
+import { AuthGuard } from './services/auth';  // guard தனியா file
+
 export const routes: Routes = [
-  {path: '',
-  redirectTo: 'home',
-  pathMatch: 'full',
-},
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full',
+  },
   {
     path: 'home',
     component: Home,
   },
-    {
+  {
     path: 'signup',
     component: Signup,
-
-
-},
-{
-  path: 'login',
+  },
+  {
+    path: 'login',
     component: Login,
-},
-
-{
-  path: 'chat',
+  },
+  {
+    path: 'chat',
     component: ChatComponents,
-},
-{
-  path: '**',
-    redirectTo: 'login', // 👈 not found -> login
-}
+    canActivate: [AuthGuard], // ✅ guard apply
+  },
+  {
+    path: '**',
+    redirectTo: 'login', // 👈 not found → login
+  },
 ];
-@NgModule({
-  imports:[RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule{}
