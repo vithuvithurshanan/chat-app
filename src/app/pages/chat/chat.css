@@ -22,6 +22,137 @@
 .my-message p {
  text-align: right;
 }
+/* Users List Sidebar Styles */
+.users-sidebar {
+  width: 350px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  overflow-y: auto;
+  position: relative;
+  z-index: 3;
+  transition: all 0.3s ease;
+}
+
+.user-list-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.user-list-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.user-list-item.selected-user {
+  background: rgba(255, 255, 255, 0.15);
+  border-left: 3px solid #667eea;
+}
+
+.user-list-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.status-dot {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid rgba(30, 60, 114, 0.9);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* User Details Sidebar Styles */
+.user-details-sidebar {
+  width: 350px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1.5rem;
+  overflow-y: auto;
+  position: relative;
+  z-index: 5;
+  transition: transform 0.3s ease;
+}
+
+.user-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: white;
+  font-weight: bold;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.user-avatar:hover {
+  transform: scale(1.05);
+}
+
+.user-info-section {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  transition: background 0.2s ease;
+}
+
+.user-info-section:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.action-button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.5rem;
+  color: white;
+  padding: 0.75rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.action-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+.action-button.danger {
+  background: rgba(220, 38, 38, 0.2);
+  border: 1px solid rgba(220, 38, 38, 0.4);
+  color: #fca5a5;
+}
+
+.action-button.danger:hover {
+  background: rgba(220, 38, 38, 0.3);
+}
+
 .glass-button {
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
@@ -38,6 +169,87 @@
   background: rgba(255, 255, 255, 0.25);
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Chat Header Styles */
+.chat-header {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  margin: 1rem 1rem 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.chat-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.chat-avatar:hover {
+  transform: scale(1.1);
+}
+
+.chat-action-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+}
+
+.chat-action-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .users-sidebar {
+    width: 280px;
+  }
+
+  .user-details-sidebar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 1000;
+  }
+
+  .chat-header {
+    margin: 0.5rem;
+  }
+
+  .chat-avatar {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .users-sidebar {
+    display: none;
+  }
 }
 
 
@@ -78,5 +290,63 @@
   color: #c22c2c;
   font-size: 0.8rem;
   cursor: pointer;
+}
 
+/* ✅ Custom Scrollbar Styles - Slim and show on hover */
+/* For Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Show scrollbar on hover */
+.users-sidebar::-webkit-scrollbar-thumb,
+.user-details-sidebar::-webkit-scrollbar-thumb,
+main > div::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.users-sidebar:hover::-webkit-scrollbar-thumb,
+.user-details-sidebar:hover::-webkit-scrollbar-thumb,
+main > div:hover::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.users-sidebar:hover::-webkit-scrollbar-thumb:hover,
+.user-details-sidebar:hover::-webkit-scrollbar-thumb:hover,
+main > div:hover::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.users-sidebar,
+.user-details-sidebar,
+main > div {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.users-sidebar:hover,
+.user-details-sidebar:hover,
+main > div:hover {
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
 }
