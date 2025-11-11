@@ -15,6 +15,8 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_WOLF_CHAT_2C2B9 }}
+          # try multiple common secret names as a fallback so the workflow is more robust
+          # repository admins can set any of these secrets (preferred: FIREBASE_SERVICE_ACCOUNT)
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_WOLF_CHAT_2C2B9 || secrets.FIREBASE_SERVICE_ACCOUNT || secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}
           channelId: live
           projectId: wolf-chat-2c2b9
